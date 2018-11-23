@@ -1,0 +1,16 @@
+{
+  "name": "kirby-plugin-image.crop-field",
+  "description": "A image cropping field for kirby.",
+  "authors": [
+    {
+      "name": "Rico Steiner",
+      "email": "rico.steiner@itecs-engineering.ch"
+    }
+  ],
+  "version": "1.0.0",
+  "type": "kirby-plugin",
+  "license": "MIT",
+  "require": {
+    "gumlet/php-image-resize": "1.9.*"
+  }
+}

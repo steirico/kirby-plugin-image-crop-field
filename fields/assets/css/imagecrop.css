@@ -1,0 +1,50 @@
+.image-wrapper {
+    position: absolute;
+    top: 50%;
+    max-width: 98%;
+    max-height: 98%;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.rcrop-wrapper .rcrop-outer-wrapper{
+    opacity: .75;
+}
+.rcrop-wrapper .rcrop-outer{
+    background: #000
+}
+.rcrop-wrapper .rcrop-croparea-inner{
+    border: 1px dashed #fff;
+}
+
+.rcrop-wrapper .rcrop-handler-wrapper .rcrop-handler-corner{
+    width:12px;
+    height: 12px;
+    background: none;
+    border : 0 solid #51aeff;
+}
+.rcrop-wrapper .rcrop-handler-wrapper .rcrop-handler-top-left{
+    border-top-width: 4px;
+    border-left-width: 4px;
+    top:-2px;
+    left:-2px
+}
+.rcrop-wrapper .rcrop-handler-wrapper .rcrop-handler-top-right{
+    border-top-width: 4px;
+    border-right-width: 4px;
+    top:-2px;
+    right:-2px
+}
+.rcrop-wrapper .rcrop-handler-wrapper .rcrop-handler-bottom-right{
+    border-bottom-width: 4px;
+    border-right-width: 4px;
+    bottom:-2px;
+    right:-2px
+}
+.rcrop-wrapper .rcrop-handler-wrapper .rcrop-handler-bottom-left{
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    bottom:-2px;
+    left:-2px
+}

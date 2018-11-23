@@ -1,0 +1,12 @@
+{
+    "name": "kirby-plugin-image.crop-field",
+    "description": "A image cropping field for kirby.",
+    "author": "Rico Steiner <rico@vweb.ch>",
+    "version": "1.0.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/steirico/kirby-plugin-image-crop-field"
+    },
+    "type": "kirby-plugin",
+    "license": "MIT"
+  }
