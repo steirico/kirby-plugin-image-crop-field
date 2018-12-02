@@ -5,6 +5,10 @@ var initImageCrop = function(){
     var $parent = $image.parent()
     var $wrapper = $('<div class="image-wrapper"></div>');
     var $field = $($.find('.field-name-crop')[0]);
+    var $fieldGrid = $($field.find('.field-grid')[0]);
+    var minW = parseInt($fieldGrid.attr('data-min-w'), 10);
+    var minH = parseInt($fieldGrid.attr('data-min-h'), 10);
+    var aspectRatio = $fieldGrid.attr('data-aspect-ratio');
 
     var inputs = {
         x : $($field.find('#X')),
@@ -19,8 +23,11 @@ var initImageCrop = function(){
 
     // init rcrop
     $image.rcrop({
-        minSize : [160,90],
-        preserveAspectRatio : true,
+        minSize : [
+            minW || 160,
+            minH || 90
+        ],
+        preserveAspectRatio : aspectRatio,
         grid : true
     });
 

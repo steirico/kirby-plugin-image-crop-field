@@ -26,12 +26,26 @@ class ImageCropField extends BaseField {
       return false;
     }
 
-    $grid  = '<div class="field-grid">';
-    $grid .= '<div class="field-grid-item field-grid-item-1-2">' . $this->inputs("X") . '</div>';
-    $grid .= '<div class="field-grid-item field-grid-item-1-2">' . $this->inputs("W") . '</div>';
-    $grid .= '<div class="field-grid-item field-grid-item-1-2">' . $this->inputs("Y") . '</div>';
-    $grid .= '<div class="field-grid-item field-grid-item-1-2">' . $this->inputs("H") . '</div>';
-    $grid .= '</div>';
+    $grid = new Brick('div');
+    $grid->addClass('field-grid');
+
+
+    if(is_array($this->minSize())){
+      if(array_key_exists('w', $this->minSize())){
+        $grid->data('min-w', $this->minSize()['w']);
+      }
+
+      if(array_key_exists('h', $this->minSize())){
+        $grid->data('min-h', $this->minSize()['h']);
+      }
+    }
+
+    $grid->data('aspect-ratio', $this->preserveAspectRatio() == false ? "false" : "true" );
+
+    $grid->append('<div class="field-grid-item field-grid-item-1-2">' . $this->inputs("X") . '</div>');
+    $grid->append('<div class="field-grid-item field-grid-item-1-2">' . $this->inputs("W") . '</div>');
+    $grid->append('<div class="field-grid-item field-grid-item-1-2">' . $this->inputs("Y") . '</div>');
+    $grid->append('<div class="field-grid-item field-grid-item-1-2">' . $this->inputs("H") . '</div>');
 
     return $grid;
   }
@@ -89,6 +103,20 @@ class ImageCropField extends BaseField {
     $image->freecrop($result["W"], $result["H"], $result["X"], $result["Y"]);
     $image->save($croppedFileRoot);
 
+    if(is_array($this->targetSize())){
+      if(array_key_exists('w', $this->targetSize())){
+        $image = new \Gumlet\ImageResize($croppedFileRoot);
+        $image->resizeToWidth($this->targetSize()['w'], $allow_enlarge = True);
+        $image->save($croppedFileRoot);
+      }
+
+      if(array_key_exists('h', $this->targetSize())){
+        $image = new \Gumlet\ImageResize($croppedFileRoot);
+        $image->resizeToHeight($this->targetSize()['h'], $allow_enlarge = True);
+        $image->save($croppedFileRoot);
+      }
+    }
+    
     return yaml::encode($result);
   }
 
