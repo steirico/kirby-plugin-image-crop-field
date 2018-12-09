@@ -1,6 +1,4 @@
 <?php
-require_once 'filemethod.php';
-
 class ImageCropField extends BaseField {
 
   static public $assets = array(
@@ -13,11 +11,6 @@ class ImageCropField extends BaseField {
       'imagecrop.css'
     )
   );
-
- /* public function element() {
-    $element = parent::element();
-    return $element;
-  }*/
 
   public function content() {
 

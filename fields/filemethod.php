@@ -6,7 +6,7 @@ file::$methods['imageCrop'] = function($requestedFile) {
     $file =  str::replace($requestedFile->safeName(), '.' . $requestedFile->extension(), '') . '-cropped.' . $requestedFile->extension();
     $filePath = $path . DS . $file;
     $fileUrl = $baseUrl . DS . $file;
-    $media = new Media($filePath, $fileUrl);
+    $media = new CroppedMedia($filePath, $fileUrl, $requestedFile);
     if($media->exists()){
         return $media;
     } else {
