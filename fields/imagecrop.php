@@ -116,6 +116,36 @@ class ImageCropField extends BaseField {
 
   public function value() {
     $value = parent::value();
-    return yaml::decode($value); 
+
+    if(empty($value)){
+      if(array_key_exists('w', $this->targetSize())){
+        $w = $this->targetSize()['w'];
+      } else {
+        $w = floor($this->model()->dimensions()->width() / 3);
+      }
+
+      if(array_key_exists('h', $this->targetSize())){
+        $h = $this->targetSize()['h'];
+      } else {
+        $h = floor($this->model()->dimensions()->height() / 3);
+      }
+      
+      $x = floor(($this->model()->dimensions()->width() - $w) / 2);
+      $y = floor(($this->model()->dimensions()->height() - $h) / 2);
+
+      $this->value = array(
+        "X" => $x,
+        "Y" => $y,
+        "W" => $w,
+        "H" => $h
+      );
+
+      return $this->value;
+    } else if(is_array($value)){
+      return $value;
+    } else {
+      return yaml::decode($value);
+    }
   }
+
 }
