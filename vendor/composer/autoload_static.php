@@ -4,8 +4,12 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite6d2bcb46b753aa562b3a81fc4170956
+class ComposerStaticInit8e568b3369f8edd25728780be5186a89
 {
+    public static $files = array (
+        '3ce23abfcacd8694d90830ebc6c96e38' => __DIR__ . '/../..' . '/config.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'G' => 
         array (
@@ -20,11 +24,17 @@ class ComposerStaticInite6d2bcb46b753aa562b3a81fc4170956
         ),
     );
 
+    public static $classMap = array (
+        'CroppedImage' => __DIR__ . '/../..' . '/fields/CroppedImage.php',
+        'ImageCropField' => __DIR__ . '/../..' . '/fields/imagecrop.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite6d2bcb46b753aa562b3a81fc4170956::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite6d2bcb46b753aa562b3a81fc4170956::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit8e568b3369f8edd25728780be5186a89::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit8e568b3369f8edd25728780be5186a89::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit8e568b3369f8edd25728780be5186a89::$classMap;
 
         }, null, ClassLoader::class);
     }

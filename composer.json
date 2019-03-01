@@ -1,15 +1,29 @@
 {
-  "name": "kirby-plugin-image.crop-field",
+  "name": "steirico/kirby-plugin-image-crop-field",
   "description": "A image cropping field for kirby.",
+  "keywords": [
+    "kirby3",
+    "plugin",
+    "field",
+    "image", "crop"
+  ],
   "authors": [
     {
       "name": "Rico Steiner",
-      "email": "rico.steiner@itecs-engineering.ch"
+      "email": "rico@vweb.ch"
     }
   ],
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "kirby-plugin",
   "license": "MIT",
+  "autoload": {
+    "classmap": [
+      "fields/"
+    ],
+    "files": [
+        "config.php"
+    ]
+  },
   "require": {
     "gumlet/php-image-resize": "1.9.*"
   }

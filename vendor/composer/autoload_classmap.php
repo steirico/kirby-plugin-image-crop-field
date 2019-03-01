@@ -6,4 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'CroppedImage' => $baseDir . '/fields/CroppedImage.php',
+    'ImageCropField' => $baseDir . '/fields/imagecrop.php',
 );
