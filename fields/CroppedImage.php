@@ -1,7 +1,6 @@
 <?php
 
 class CroppedImage extends Kirby\CMS\File {
-  //use Kirby\Traits\Image;
 
   private $original;
   private $cropField = null;
@@ -16,10 +15,10 @@ class CroppedImage extends Kirby\CMS\File {
     $cropData = $this->getCropData();
 
     if(is_array($cropData)){      
-      $w = $cropData["W"];
-      $h = $cropData["H"];
-      $x = $cropData["X"];
-      $y = $cropData["Y"];
+      $w = $cropData["width"];
+      $h = $cropData["height"];
+      $x = $cropData["x"];
+      $y = $cropData["y"];
 
       $originalParts = pathinfo($original->root());
       $croppedFileName = sprintf("%s-cropped-W%sH%s-X%sY%s.%s",
