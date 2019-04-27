@@ -15,10 +15,10 @@ class CroppedImage extends Kirby\CMS\File {
     $cropData = $this->getCropData();
 
     if(is_array($cropData)){      
-      $w = $cropData["width"];
-      $h = $cropData["height"];
-      $x = $cropData["x"];
-      $y = $cropData["y"];
+      $w = A::get($cropData, "width", $original->width());
+      $h = A::get($cropData, "height", $original->height());
+      $x = A::get($cropData, "x", 0);
+      $y = A::get($cropData, "y", 0);
 
       $originalParts = pathinfo($original->root());
       $croppedFileName = sprintf("%s-cropped-W%sH%s-X%sY%s.%s",
