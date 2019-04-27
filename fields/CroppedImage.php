@@ -29,6 +29,9 @@ class CroppedImage extends Kirby\CMS\File {
       $croppedPath = strtolower(dirname($original->root()));
       $croppedRoot = strtolower($croppedPath . '/' . $croppedFileName);
 
+      $oldRoot = strtolower($croppedPath . '/' . F::safeName($original->filename()));
+      $oldCropped = F::similar($oldRoot, "-cropped-*");
+
       $props = array(
         'root'      => $croppedRoot,
         'filename'  => $croppedFileName,
@@ -40,6 +43,10 @@ class CroppedImage extends Kirby\CMS\File {
       if(!$this->exists()){
         if(!file_exists($croppedPath)){
           mkdir($croppedPath, 0770, true);
+        }
+        
+        foreach($oldCropped as $old){
+          F::remove($old);
         }
         
         $cropped = new \Gumlet\ImageResize($original->root());
