@@ -50,15 +50,17 @@ class CroppedImage extends Kirby\CMS\File {
         $targetSize = $cropConfig["targetSize"];
 
         if(is_array($targetSize)){
-          if(array_key_exists('w', $targetSize)){
+          $targetW = A::get($targetSize, "width");
+          $targetH = A::get($targetSize, "height");
+          if($targetW){
             $image = new \Gumlet\ImageResize($croppedRoot);
-            $image->resizeToWidth($targetSize['w'], $allow_enlarge = True);
+            $image->resizeToWidth($targetW, $allow_enlarge = true);
             $image->save($croppedRoot);
           }
     
-          if(array_key_exists('h', $targetSize)){
+          if($targetH){
             $image = new \Gumlet\ImageResize($croppedRoot);
-            $image->resizeToHeight($targetSize['h'], $allow_enlarge = True);
+            $image->resizeToHeight($targetH, $allow_enlarge = true);
             $image->save($croppedRoot);
           }
         }
