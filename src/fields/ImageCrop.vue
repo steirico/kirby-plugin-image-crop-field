@@ -1,26 +1,34 @@
 <template>
   <k-field v-bind="$props" :input="_uid" class="kirby-imagecrop-field">
     <div class="image" v-if="image">
-      <vue-cropper
-        ref="cropper"
-        :view-mode="1"
-        :dragMode="crop"
-        :autoCrop="true"
-        :zoomable="false"
-        :movable="false"
-        :data="value"
-        :aspectRatio="aspectRatio"
-        :src="image"
-        alt="Source Image"
-        :ready="ready"
-        :crop="cropmove"
-        :cropend="cropend"    
-      ></vue-cropper>
-      <k-text-field v-model="value.x" value="value.x" name="x" label="X Offset"/>
-      <k-text-field v-model="value.y" value="value.y" name="y" label="Y Offset"/>
-      <k-text-field v-model="value.width" value="value.width" name="width" label="Width"/>
-      <k-text-field v-model="value.height" value="value.height" name="height" label="Height"/>
-
+      <k-grid>
+        <k-column width="5/6">
+          <vue-cropper
+            ref="cropper"
+            :view-mode="1"
+            :dragMode="crop"
+            :autoCrop="true"
+            :zoomable="false"
+            :movable="false"
+            :data="value"
+            :aspectRatio="aspectRatio"
+            :src="image"
+            alt="Source Image"
+            :ready="ready"
+            :crop="cropmove"
+            :cropend="cropend"    
+          ></vue-cropper>
+        </k-column>
+        <k-column width="1/6">
+          <k-headline>Crop Properties</k-headline>
+          <k-list>
+            <k-list-item :icon="{type: 'X', back: 'black', emoji: true}" :text="value.x"/>
+            <k-list-item :icon="{type: 'Y', back: 'black', emoji: true}" :text="value.y"/>
+            <k-list-item :icon="{type: '↔️', back: 'black', emoji: true}" :text="value.width"/>
+            <k-list-item :icon="{type: '↕️', back: 'black', emoji: true}" :text="value.height"/>
+          </k-list>
+        </k-column>
+      </k-grid>
     </div>
     <k-box v-else>
       That's not an image!
@@ -90,9 +98,6 @@ export default {
         this.isCropping = false;
         this.$emit("input", this.value);
       }
-    },
-    fieldinput(e, f){
-      this.$emit("input", this.value);
     },
     ready(){
       this.ready = true;
