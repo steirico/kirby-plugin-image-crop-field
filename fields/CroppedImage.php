@@ -21,7 +21,7 @@ class CroppedImage extends Kirby\CMS\File {
       $y = A::get($cropData, "y", 0);
 
       $originalParts = pathinfo($original->root());
-      $croppedFileName = sprintf("%s-cropped-W%sH%s-X%sY%s.%s",
+      $croppedFileName = sprintf("%s-cropped-w%sh%s-x%sy%s.%s",
         F::safeName($originalParts['filename']),
         $w, $h, $x, $y,
         $original->extension()
