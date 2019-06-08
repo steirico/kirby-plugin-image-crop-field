@@ -9,10 +9,10 @@ Kirby::plugin('steirico/kirby-plugin-image-crop-field', [
     'fields' => [
         'imagecrop' => [
             'props' => [
-                'image' => function($value = null) {
+                'image' => function() {
                     return $this->model()->url();
                 },
-                'value' => function($value = null){
+                'value' => function($value = []){
                     if(is_array($value)){
                         return $value;
                     } else {
