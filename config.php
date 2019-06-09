@@ -13,6 +13,11 @@ Kirby::plugin('steirico/kirby-plugin-image-crop-field', [
                     return $this->model()->url();
                 },
                 'value' => function($value = []){
+                    $method = kirby()->request()->method();
+                    if(($method == "PATCH") || ($method == "POST")) {
+                        new CroppedImage($this->model());
+                    }
+
                     if(is_array($value)){
                         return $value;
                     } else {

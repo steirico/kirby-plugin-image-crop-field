@@ -14,7 +14,7 @@ class CroppedImage extends Kirby\CMS\File {
     $this->original = $original;
     $cropData = $this->getCropData();
 
-    if(is_array($cropData)){      
+    if(is_array($cropData) && count($cropData) != 0){      
       $w = A::get($cropData, "width", $original->width());
       $h = A::get($cropData, "height", $original->height());
       $x = A::get($cropData, "x", 0);
@@ -72,7 +72,9 @@ class CroppedImage extends Kirby\CMS\File {
           }
         }
       }
-    } 
+    } else {
+      parent::__construct($this->original->propertiesToArray());
+    }
   }
 
   public function getCropData() {
@@ -83,8 +85,12 @@ class CroppedImage extends Kirby\CMS\File {
     if($this->original){
       $field = $this->getCropField();
       $fieldName = $field["name"];
-      $this->cropData = $this->original->content()->{$fieldName}()->yaml();
-      return $this->cropData;
+      if($fieldName) {
+        $this->cropData = $this->original->content()->{$fieldName}()->yaml();
+        return $this->cropData;
+      } else {
+        return array(); 
+      }
     }
 
     return null;
@@ -96,7 +102,7 @@ class CroppedImage extends Kirby\CMS\File {
     }
 
     if($this->original){
-      $fields = $this->original ->blueprint()->fields();
+      $fields = $this->original->blueprint()->fields();
 
       foreach($fields as $field){
         if($field["type"] == CroppedImage::FIELD_TYPE){
@@ -111,7 +117,7 @@ class CroppedImage extends Kirby\CMS\File {
 
   public static function croppedImage($requestedFile) {
     $media = new CroppedImage($requestedFile);
-    if($media->exists()){
+    if($media && $media->exists()){
         return $media;
     } else {
         return $requestedFile;
