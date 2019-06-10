@@ -26,7 +26,6 @@ class ComposerStaticInit8e568b3369f8edd25728780be5186a89
 
     public static $classMap = array (
         'CroppedImage' => __DIR__ . '/../..' . '/fields/CroppedImage.php',
-        'ImageCropField' => __DIR__ . '/../..' . '/fields/imagecrop.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
