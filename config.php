@@ -2,7 +2,7 @@
 
 Kirby::plugin('steirico/kirby-plugin-image-crop-field', [
     'fileMethods' => [
-        'croppedMedia' => function() {
+        'croppedImage' => function() {
             return CroppedImage::croppedImage($this);
         },
     ],
