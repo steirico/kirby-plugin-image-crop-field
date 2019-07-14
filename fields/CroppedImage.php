@@ -49,9 +49,9 @@ class CroppedImage extends Kirby\CMS\File {
           F::remove($old);
         }
         
-        $cropped = new \Gumlet\ImageResize($original->root());
-        $cropped->freecrop($w, $h, $x, $y);
-        $cropped->save($croppedRoot);
+        $cropped = new ImageResize($original->root());
+        $cropped->freecrop($w, $h, $x, $y)->setMemory()->save($croppedRoot);
+        unset($cropped);
   
         $cropConfig = $this->getCropField();
         $targetSize = $cropConfig["targetSize"];
@@ -60,15 +60,15 @@ class CroppedImage extends Kirby\CMS\File {
           $targetW = abs(A::get($targetSize, "width", 0));
           $targetH = abs(A::get($targetSize, "height", 0));
           if(0 < $targetW){
-            $image = new \Gumlet\ImageResize($croppedRoot);
-            $image->resizeToWidth($targetW, $allow_enlarge = true);
-            $image->save($croppedRoot);
+            $image = new ImageResize($croppedRoot);
+            $image->resizeToWidth($targetW, $allow_enlarge = true)->setMemory()->save($croppedRoot);
+            unset($image);
           }
     
           if(0 < $targetH){
-            $image = new \Gumlet\ImageResize($croppedRoot);
-            $image->resizeToHeight($targetH, $allow_enlarge = true);
-            $image->save($croppedRoot);
+            $image = new ImageResize($croppedRoot);
+            $image->resizeToHeight($targetH, $allow_enlarge = true)->setMemory()->save($croppedRoot);
+            unset($image);
           }
         }
       }
