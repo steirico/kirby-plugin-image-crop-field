@@ -18,7 +18,8 @@
   "license": "MIT",
   "autoload": {
     "classmap": [
-      "fields/"
+      "fields/",
+      "lib/"
     ],
     "files": [
         "config.php"

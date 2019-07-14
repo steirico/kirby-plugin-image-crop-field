@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'CroppedImage' => $baseDir . '/fields/CroppedImage.php',
+    'ImageResize' => $baseDir . '/lib/ImageResize.php',
 );
