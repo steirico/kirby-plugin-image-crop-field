@@ -26,10 +26,10 @@ class CroppedImage extends Kirby\CMS\File {
         $w, $h, $x, $y,
         $original->extension()
       );
-      $croppedPath = strtolower(dirname($original->root()));
-      $croppedRoot = strtolower($croppedPath . '/' . $croppedFileName);
+      $croppedPath = dirname($original->root());
+      $croppedRoot = $croppedPath . '/' . $croppedFileName;
 
-      $oldRoot = strtolower($croppedPath . '/' . F::safeName($original->filename()));
+      $oldRoot = $croppedPath . '/' . F::safeName($original->filename());
       $oldCropped = F::similar($oldRoot, "-cropped-*");
 
       $props = array(
