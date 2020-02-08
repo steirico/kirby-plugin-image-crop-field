@@ -24,19 +24,19 @@
     "@vue/component-compiler-utils": "^2.3.0",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
-    "browserslist": "^4.6.4",
-    "caniuse-lite": "^1.0.30000984",
-    "node-sass": "^4.11.0",
-    "parcel-bundler": "^1.10.3",
-    "sass": "^1.22.4",
-    "sass-loader": "^7.1.0",
-    "stylus": "^0.54.5",
-    "vue-hot-reload-api": "^2.3.1",
-    "vue-template-compiler": "^2.6.8"
+    "browserslist": "^4.8.6",
+    "caniuse-lite": "^1.0.30001025",
+    "node-sass": "^4.13.1",
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.25.0",
+    "sass-loader": "^7.3.1",
+    "stylus": "^0.54.7",
+    "vue-hot-reload-api": "^2.3.4",
+    "vue-template-compiler": "^2.6.11"
   },
   "dependencies": {
     "src": "^1.1.2",
-    "vue": "^2.5.21",
+    "vue": "^2.6.11",
     "vue-cropperjs": "^3.0.0"
   }
 }
