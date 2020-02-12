@@ -27,10 +27,11 @@ class ImageResize extends \Gumlet\ImageResize {
     public function setMemory() {
         if($this->memoryLimit == -1){
             return $this;
-        } else { 
-            $memoryNeeded = round(
-                ($this->dest_w * $this->dest_h * $this->imageInfo['bits'] * $this->imageInfo['channels'] / 8 + self::K64) * self::TWEAKFACTOR
-            );
+        } else {
+            $w = max($this->imageInfo[0], $this->dest_w, $this->source_w, $this->original_w, 1);
+            $h = max($this->imageInfo[1], $this->dest_h, $this->source_h, $this->original_h, 1);
+
+            $memoryNeeded = round(($w * $h * $this->imageInfo['bits'] * $this->imageInfo['channels'] / 8 + self::K64) * self::TWEAKFACTOR);
 
             $memoryUsage = memory_get_usage(true);
             $newLimit = $memoryUsage + $memoryNeeded;
@@ -38,6 +39,7 @@ class ImageResize extends \Gumlet\ImageResize {
             if ($newLimit > $this->memoryLimit) {
                 $newLimit = ceil($newLimit / self::MB);
                 ini_set( 'memory_limit', $newLimit . "M" );
+                $this->memoryLimit = $newLimit;
                 return $this;
             } else {
                 return $this;
