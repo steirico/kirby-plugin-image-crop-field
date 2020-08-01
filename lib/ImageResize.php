@@ -31,7 +31,13 @@ class ImageResize extends \Gumlet\ImageResize {
             $w = max($this->imageInfo[0], $this->dest_w, $this->source_w, $this->original_w, 1);
             $h = max($this->imageInfo[1], $this->dest_h, $this->source_h, $this->original_h, 1);
 
-            $memoryNeeded = round(($w * $h * $this->imageInfo['bits'] * $this->imageInfo['channels'] / 8 + self::K64) * self::TWEAKFACTOR);
+            if (array_key_exists("channels", $this->imageInfo)) {
+                $channels = $this->imageInfo['channels'];
+            } else {
+                $channels = 3;
+            }
+
+            $memoryNeeded = round(($w * $h * $this->imageInfo['bits'] * $channels / 8 + self::K64) * self::TWEAKFACTOR);
 
             $memoryUsage = memory_get_usage(true);
             $newLimit = $memoryUsage + $memoryNeeded;
