@@ -6,5 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Kirby\\' => array($vendorDir . '/getkirby/composer-installer/src'),
     'Gumlet\\' => array($vendorDir . '/gumlet/php-image-resize/lib'),
 );

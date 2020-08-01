@@ -11,6 +11,10 @@ class ComposerStaticInitece114745a01ad46dd9f34d0fd1e5622
     );
 
     public static $prefixLengthsPsr4 = array (
+        'K' => 
+        array (
+            'Kirby\\' => 6,
+        ),
         'G' => 
         array (
             'Gumlet\\' => 7,
@@ -18,6 +22,10 @@ class ComposerStaticInitece114745a01ad46dd9f34d0fd1e5622
     );
 
     public static $prefixDirsPsr4 = array (
+        'Kirby\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/getkirby/composer-installer/src',
+        ),
         'Gumlet\\' => 
         array (
             0 => __DIR__ . '/..' . '/gumlet/php-image-resize/lib',
