@@ -26,7 +26,7 @@
     "babel-preset-env": "^1.7.0",
     "browserslist": "^4.8.6",
     "caniuse-lite": "^1.0.30001025",
-    "node-sass": "^4.13.1",
+    "node-sass": "^4.14.1",
     "parcel-bundler": "^1.12.4",
     "sass": "^1.25.0",
     "sass-loader": "^7.3.1",
