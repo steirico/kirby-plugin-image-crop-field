@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'CroppedImage' => $baseDir . '/fields/CroppedImage.php',
     'ImageResize' => $baseDir . '/lib/ImageResize.php',
 );
