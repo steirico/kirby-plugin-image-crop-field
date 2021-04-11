@@ -37,6 +37,6 @@
   "dependencies": {
     "src": "^1.1.2",
     "vue": "^2.6.12",
-    "vue-cropperjs": "^3.0.0"
+    "vue-cropperjs": "^4.2.0"
   }
 }
