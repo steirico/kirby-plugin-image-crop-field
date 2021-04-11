@@ -22,14 +22,14 @@ class CroppedImage extends Kirby\CMS\File {
 
       $originalParts = pathinfo($original->root());
       $croppedFileName = sprintf("%s-cropped-w%sh%s-x%sy%s.%s",
-        F::safeName($originalParts['filename']),
+        $originalParts['filename'],
         $w, $h, $x, $y,
         $original->extension()
       );
       $croppedPath = dirname($original->root());
       $croppedRoot = $croppedPath . '/' . $croppedFileName;
 
-      $oldRoot = $croppedPath . '/' . F::safeName($original->filename());
+      $oldRoot = $croppedPath . '/' . $original->filename();
       $oldCropped = F::similar($oldRoot, "-cropped-*");
 
       $props = array(
@@ -73,6 +73,7 @@ class CroppedImage extends Kirby\CMS\File {
         }
       }
     } else {
+      $original->propertyData["filename"] = F::safeName($original->filename());
       parent::__construct($this->original->propertiesToArray());
     }
   }
