@@ -22,10 +22,10 @@
         <k-column width="1/6">
           <k-headline>Crop Properties</k-headline>
           <k-list>
-            <k-list-item :icon="{type: 'X', back: 'black', emoji: true}" :text="value.x"/>
-            <k-list-item :icon="{type: 'Y', back: 'black', emoji: true}" :text="value.y"/>
-            <k-list-item :icon="{type: '↔️', back: 'black', emoji: true}" :text="value.width"/>
-            <k-list-item :icon="{type: '↕️', back: 'black', emoji: true}" :text="value.height"/>
+            <k-list-item :image=true :icon="{type: '→', back: 'black', emoji: true}" :text="value.x"/>
+            <k-list-item :image=true :icon="{type: '↓', back: 'black', emoji: true}" :text="value.y"/>
+            <k-list-item :image=true :icon="{type: '↔️', back: 'black', emoji: true}" :text="value.width"/>
+            <k-list-item :image=true :icon="{type: '↕️', back: 'black', emoji: true}" :text="value.height"/>
           </k-list>
         </k-column>
       </k-grid>
