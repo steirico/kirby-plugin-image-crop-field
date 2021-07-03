@@ -33,6 +33,7 @@ class ComposerStaticInitece114745a01ad46dd9f34d0fd1e5622
     );
 
     public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'CroppedImage' => __DIR__ . '/../..' . '/fields/CroppedImage.php',
         'ImageResize' => __DIR__ . '/../..' . '/lib/ImageResize.php',
     );
